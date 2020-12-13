@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>ContactList</title>
+  <!-- 新 Bootstrap4 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+  <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="./contactlist.html" th:href="@{/contact/list}">联系人列表</a></li>
+    <li class="breadcrumb-item active">编辑联系人</li>
+  </ol>
+  <form action="/contact/edit" method="post" th:action="@{/contact/edit}">
+    <input type="hidden" name="id" value="1" th:value="${contact.id}">
+    <div class="form-group">
+      <label for="name">姓名:</label>
+      <input type="text" class="form-control" id="name" name="name" th:value="${contact.name}">
+      <label for="tel">电话:</label>
+      <input type="text" class="form-control" id="tel" name="tel" th:value="${contact.tel}">
+      <label for="address">住址:</label>
+      <input type="text" class="form-control" id="address" name="address" th:value="${contact.address}">
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" id="email" name="email" th:value="${contact.email}">
+      <label for="qq">QQ:</label>
+      <input type="text" class="form-control" id="qq" name="qq" th:value="${contact.qq}">
+    </div>
+    <button type="submit" class="btn btn-primary">保存</button>
+  </form>
+</div>
+</body>
+</html>

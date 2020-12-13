@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>联系人列表</h2>
+    <a class="btn btn-primary float-right" href="./contactadd.html" th:href="@{/contact/add}">添加</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>地址</th>
+            <th>电话</th>
+            <th>邮箱</th>
+            <th>QQ</th>
+        </tr>
+        </thead>
+        <tbody th:remove="all-but-first">
+        <tr th:each="contact:${contacts}" >
+            <td th:text="${contact.name}">李小明</td>
+            <td th:text="${contact.address}">北京</td>
+            <td th:text="${contact.tel}">北京</td>
+            <td th:text="${contact.email}">xiaoming@163.com</td>
+            <td th:text="${contact.qq}">134679</td>
+            <td>
+                <a type="button" class="btn btn-xs btn-success" href="./contactedit.html?contactId=1"
+                   th:href="@{/contact/edit(contactId=${contact.id})}">编辑</a>
+                <a type="button" class="btn  btn-xs btn-danger" href="./contactdel.html?contactId=1"
+                   th:href="@{/contact/delete(contactId=${contact.id})}">删除</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
